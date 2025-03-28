@@ -14,10 +14,24 @@
         h1 {
             text-align: center;
             color: #333;
+            margin-bottom: 20px;
         }
         h2 {
             color: #555;
             margin-top: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+        }
+        h2:hover {
+            background-color: #d0d0d0;
+        }
+        h2 .toggle-icon {
+            font-size: 18px;
         }
         table {
             width: 100%;
@@ -25,6 +39,10 @@
             margin: 20px 0;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: none; /* 預設收合 */
+        }
+        table.active {
+            display: table; /* 展開時顯示 */
         }
         th, td {
             padding: 15px;
@@ -50,13 +68,116 @@
             margin-top: 20px;
             text-align: center;
         }
+        /* 導航欄樣式 */
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 10px 0;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        /* 搜尋框樣式 */
+        .search-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .search-container input {
+            padding: 10px;
+            width: 50%;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        /* 響應式設計 */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            h2 {
+                font-size: 18px;
+            }
+            th, td {
+                padding: 10px;
+                font-size: 14px;
+            }
+            .navbar a {
+                float: none;
+                display: block;
+                text-align: left;
+                padding: 10px;
+                font-size: 14px;
+            }
+            .search-container input {
+                width: 80%;
+            }
+        }
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 20px;
+            }
+            h2 {
+                font-size: 16px;
+            }
+            th, td {
+                padding: 8px;
+                font-size: 12px;
+            }
+            .navbar a {
+                font-size: 12px;
+            }
+            .search-container input {
+                width: 90%;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- 導航欄 -->
+    <div class="navbar">
+        <a href="#section5">五、共有部分項目</a>
+        <a href="#section6">六、房地面積誤差及其價款找補</a>
+        <a href="#section7">七、契約總價</a>
+        <a href="#section7-1">七之一、履約擔保機制</a>
+        <a href="#section8">八、付款條件</a>
+        <a href="#section11">十一、建材設備及其廠牌、規格</a>
+        <a href="#section12">十二、開工及取得使用執照期限</a>
+        <a href="#section13">十三、驗收</a>
+        <a href="#section14">十四、房地所有權移轉登記期限</a>
+        <a href="#section15">十五、通知交屋期限</a>
+        <a href="#section17">十七、保固期限及範圍</a>
+        <a href="#section18">十八、貸款約定</a>
+        <a href="#section20">二十、房地讓與或轉售條件</a>
+        <a href="#section21">二十一、地價稅、房屋稅之分擔比例</a>
+        <a href="#section24">二十四、違約之處罰</a>
+        <a href="#section-party">當事人及基本資料</a>
+    </div>
+
     <h1>宜蘭縣預售屋買賣契約條文常見錯誤量態彙整表</h1>
 
-    <div class="section">
-        <h2>五、共有部分項目</h2>
+    <!-- 搜尋框 -->
+    <div class="search-container">
+        <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="輸入關鍵字搜尋...">
+    </div>
+
+    <div class="section" id="section5">
+        <h2 onclick="toggleTable(this)">五、共有部分項目 <span class="toggle-icon">+</span></h2>
         <table>
             <tr>
                 <th>應記載事項點次</th>
@@ -77,8 +198,8 @@
         </table>
     </div>
 
-    <div class="section">
-        <h2>六、房地面積誤差及其價款找補</h2>
+    <div class="section" id="section6">
+        <h2 onclick="toggleTable(this)">六、房地面積誤差及其價款找補 <span class="toggle-icon">+</span></h2>
         <table>
             <tr>
                 <th>應記載事項點次</th>
@@ -123,8 +244,8 @@
         </table>
     </div>
 
-    <div class="section">
-        <h2>七、契約總價</h2>
+    <div class="section" id="section7">
+        <h2 onclick="toggleTable(this)">七、契約總價 <span class="toggle-icon">+</span></h2>
         <table>
             <tr>
                 <th>應記載事項點次</th>
@@ -145,8 +266,8 @@
         </table>
     </div>
 
-    <div class="section">
-        <h2>七之一、履約擔保機制</h2>
+    <div class="section" id="section7-1">
+        <h2 onclick="toggleTable(this)">七之一、履約擔保機制 <span class="toggle-icon">+</span></h2>
         <table>
             <tr>
                 <th>應記載事項點次</th>
@@ -179,8 +300,8 @@
         </table>
     </div>
 
-    <div class="section">
-        <h2>八、付款條件</h2>
+    <div class="section" id="section8">
+        <h2 onclick="toggleTable(this)">八、付款條件 <span class="toggle-icon">+</span></h2>
         <table>
             <tr>
                 <th>應記載事項點次</th>
@@ -197,8 +318,8 @@
         </table>
     </div>
 
-    <div class="section">
-        <h2>十一、建材設備及其廠牌、規格</h2>
+    <div class="section" id="section11">
+        <h2 onclick="toggleTable(this)">十一、建材設備及其廠牌、規格 <span class="toggle-icon">+</span></h2>
         <table>
             <tr>
                 <th>應記載事項點次</th>
@@ -227,8 +348,8 @@
         </table>
     </div>
 
-    <div class="section">
-        <h2>十二、開工及取得使用執照期限</h2>
+    <div class="section" id="section12">
+        <h2 onclick="toggleTable(this)">十二、開工及取得使用執照期限 <span class="toggle-icon">+</span></h2>
         <table>
             <tr>
                 <th>應記載事項點次</th>
@@ -277,8 +398,8 @@
         </table>
     </div>
 
-    <div class="section">
-        <h2>十三、驗收</h2>
+    <div class="section" id="section13">
+        <h2 onclick="toggleTable(this)">十三、驗收 <span class="toggle-icon">+</span></h2>
         <table>
             <tr>
                 <th>應記載事項點次</th>
@@ -355,8 +476,8 @@
         </table>
     </div>
 
-    <div class="section">
-        <h2>十四、房地所有權移轉登記期限</h2>
+    <div class="section" id="section14">
+        <h2 onclick="toggleTable(this)">十四、房地所有權移轉登記期限 <span class="toggle-icon">+</span></h2>
         <table>
             <tr>
                 <th>應記載事項點次</th>
@@ -397,8 +518,8 @@
         </table>
     </div>
 
-    <div class="section">
-        <h2>十五、通知交屋期限</h2>
+    <div class="section" id="section15">
+        <h2 onclick="toggleTable(this)">十五、通知交屋期限 <span class="toggle-icon">+</span></h2>
         <table>
             <tr>
                 <th>應記載事項點次</th>
@@ -475,8 +596,8 @@
         </table>
     </div>
 
-    <div class="section">
-        <h2>十七、保固期限及範圍</h2>
+    <div class="section" id="section17">
+        <h2 onclick="toggleTable(this)">十七、保固期限及範圍 <span class="toggle-icon">+</span></h2>
         <table>
             <tr>
                 <th>應記載事項點次</th>
@@ -505,8 +626,8 @@
         </table>
     </div>
 
-    <div class="section">
-        <h2>十八、貸款約定</h2>
+    <div class="section" id="section18">
+        <h2 onclick="toggleTable(this)">十八、貸款約定 <span class="toggle-icon">+</span></h2>
         <table>
             <tr>
                 <th>應記載事項點次</th>
@@ -523,8 +644,8 @@
         </table>
     </div>
 
-    <div class="section">
-        <h2>二十、房地讓與或轉售條件</h2>
+    <div class="section" id="section20">
+        <h2 onclick="toggleTable(this)">二十、房地讓與或轉售條件 <span class="toggle-icon">+</span></h2>
         <table>
             <tr>
                 <th>應記載事項點次</th>
@@ -537,8 +658,8 @@
         </table>
     </div>
 
-    <div class="section">
-        <h2>二十一、地價稅、房屋稅之分擔比例</h2>
+    <div class="section" id="section21">
+        <h2 onclick="toggleTable(this)">二十一、地價稅、房屋稅之分擔比例 <span class="toggle-icon">+</span></h2>
         <table>
             <tr>
                 <th>應記載事項點次</th>
@@ -551,8 +672,8 @@
         </table>
     </div>
 
-    <div class="section">
-        <h2>二十四、違約之處罰</h2>
+    <div class="section" id="section24">
+        <h2 onclick="toggleTable(this)">二十四、違約之處罰 <span class="toggle-icon">+</span></h2>
         <table>
             <tr>
                 <th>應記載事項點次</th>
@@ -601,8 +722,8 @@
         </table>
     </div>
 
-    <div class="section">
-        <h2>當事人及基本資料</h2>
+    <div class="section" id="section-party">
+        <h2 onclick="toggleTable(this)">當事人及基本資料 <span class="toggle-icon">+</span></h2>
         <table>
             <tr>
                 <th>應記載事項點次</th>
@@ -619,5 +740,61 @@
         <p>備註：該彙整表由主管機關公開，旨在提醒業者及消費者注意預售屋買賣契約中的常見錯誤，確保契約內容符合法規及公平原則。建議仲介業者在簽訂契約時，參考此表進行自檢，並與客戶充分溝通，避免後續糾紛。</p>
         <p>免責聲明：Grok 不是律師，請諮詢專業律師。請勿分享可識別您身份的資訊。</p>
     </div>
+
+    <script>
+        // 展開/收合功能
+        function toggleTable(element) {
+            const table = element.nextElementSibling;
+            const icon = element.querySelector('.toggle-icon');
+            if (table.classList.contains('active')) {
+                table.classList.remove('active');
+                icon.textContent = '+';
+            } else {
+                table.classList.add('active');
+                icon.textContent = '−';
+            }
+        }
+
+        // 搜尋功能
+        function searchTable() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const sections = document.querySelectorAll('.section');
+            
+            sections.forEach(section => {
+                const table = section.querySelector('table');
+                const rows = table.getElementsByTagName('tr');
+                let hasMatch = false;
+
+                // 檢查表格中的每一行
+                for (let i = 1; i < rows.length; i++) { // 從第1行開始（跳過表頭）
+                    const cells = rows[i].getElementsByTagName('td');
+                    let rowMatch = false;
+
+                    for (let j = 0; j < cells.length; j++) {
+                        if (cells[j].textContent.toLowerCase().includes(input)) {
+                            rowMatch = true;
+                            break;
+                        }
+                    }
+
+                    if (rowMatch) {
+                        rows[i].style.display = '';
+                        hasMatch = true;
+                    } else {
+                        rows[i].style.display = 'none';
+                    }
+                }
+
+                // 如果有匹配的行，顯示該區塊並展開
+                if (hasMatch) {
+                    section.style.display = '';
+                    table.classList.add('active');
+                    section.querySelector('.toggle-icon').textContent = '−';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
